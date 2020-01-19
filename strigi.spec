@@ -1,4 +1,4 @@
-%global multilib_archs x86_64 %{ix86} ppc64 ppc s390x s390 sparc64 sparcv9
+
 %if 0%{?fedora} && 0%{?fedora} < 16
 %define dt_vendor fedora
 # include clucene support
@@ -9,7 +9,7 @@
 
 Name:		strigi
 Version:	0.7.7
-Release:	13.20120626%{?dist}
+Release:	8.20120626%{?dist}
 Summary:	A desktop search program
 Group:		Applications/Productivity
 License:	LGPLv2+
@@ -19,7 +19,6 @@ URL:            http://www.vandenoever.info/software/strigi/
 Source0:	http://rdieter.fedorapeople.org/strigi/strigi-%{version}%{?pre:-%{pre}}.tar.xz
 Source1:	strigiclient.desktop
 Source2:	strigi-daemon.desktop
-Source3:	strigiconfig-multilib.h
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 ## upstream patches
@@ -133,12 +132,6 @@ desktop-file-install \
 # Add an autostart desktop file for the strigi daemon
 install -p -m644 -D %{SOURCE2} %{buildroot}%{_sysconfdir}/xdg/autostart/strigi-daemon.desktop
 
-%ifarch %{multilib_archs}
-# multilib: strigiconfig.h
-  mv %{buildroot}%{_includedir}/strigi/strigiconfig.h %{buildroot}%{_includedir}/strigi/strigiconfig-%{__isa_bits}.h
-  install -p -m644 -D %{SOURCE3} %{buildroot}%{_includedir}/strigi/strigiconfig-multilib.h
-  ln -sf strigiconfig-multilib.h %{buildroot}%{_includedir}/strigi/strigiconfig.h
-%endif
 
 %clean
 rm -rf %{buildroot}
@@ -186,22 +179,6 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Wed Sep 06 2017 Jan Grulich <jgrulich@redhat.com> - 0.7.7-13.20120626
-- Rebuild exiv2
-  Resolves: bz#1488012
-
-* Mon Apr 28 2014 Than Ngo <than@redhat.com> - 0.7.7-12.20120626
-- fix typo bug which build failure in kde-workspace
-
-* Mon Mar 17 2014 Than Ngo <than@redhat.com> - 0.7.7-11.20120626
-- fix multilib issue
-
-* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.7.7-10.20120626
-- Mass rebuild 2014-01-24
-
-* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.7.7-9.20120626
-- Mass rebuild 2013-12-27
-
 * Fri Feb 15 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.7.7-8.20120626
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
@@ -291,7 +268,7 @@ rm -rf %{buildroot}
 * Mon Jan 11 2010 Rex Dieter <rdieter@fedoraproject.org> - 0.7.1-1
 - strigi-0.7.1
 
-* Sun Jan 03 2010 Rex Dieter <rdieter@fedoraproject.org> - 0.7.0-2 
+* Mon Jan 03 2010 Rex Dieter <rdieter@fedoraproject.org> - 0.7.0-2 
 - rebuild (exiv2)
 
 * Tue Aug 04 2009 Rex Dieter <rdieter@fedoraproject.org> - 0.7.0-1
