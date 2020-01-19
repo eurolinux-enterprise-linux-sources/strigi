@@ -9,7 +9,7 @@
 
 Name:		strigi
 Version:	0.7.7
-Release:	11.20120626%{?dist}
+Release:	12.20120626%{?dist}
 Summary:	A desktop search program
 Group:		Applications/Productivity
 License:	LGPLv2+
@@ -186,6 +186,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Apr 28 2014 Than Ngo <than@redhat.com> - 0.7.7-12.20120626
+- fix typo bug which build failure in kde-workspace
+
 * Mon Mar 17 2014 Than Ngo <than@redhat.com> - 0.7.7-11.20120626
 - fix multilib issue
 
