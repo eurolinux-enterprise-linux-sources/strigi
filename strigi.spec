@@ -9,7 +9,7 @@
 
 Name:		strigi
 Version:	0.7.7
-Release:	12.20120626%{?dist}
+Release:	13.20120626%{?dist}
 Summary:	A desktop search program
 Group:		Applications/Productivity
 License:	LGPLv2+
@@ -186,6 +186,10 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Sep 06 2017 Jan Grulich <jgrulich@redhat.com> - 0.7.7-13.20120626
+- Rebuild exiv2
+  Resolves: bz#1488012
+
 * Mon Apr 28 2014 Than Ngo <than@redhat.com> - 0.7.7-12.20120626
 - fix typo bug which build failure in kde-workspace
 
@@ -287,7 +291,7 @@ rm -rf %{buildroot}
 * Mon Jan 11 2010 Rex Dieter <rdieter@fedoraproject.org> - 0.7.1-1
 - strigi-0.7.1
 
-* Mon Jan 03 2010 Rex Dieter <rdieter@fedoraproject.org> - 0.7.0-2 
+* Sun Jan 03 2010 Rex Dieter <rdieter@fedoraproject.org> - 0.7.0-2 
 - rebuild (exiv2)
 
 * Tue Aug 04 2009 Rex Dieter <rdieter@fedoraproject.org> - 0.7.0-1
